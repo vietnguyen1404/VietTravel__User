@@ -1,0 +1,170 @@
+@import "./partials/gallery.scss";
+@import "./partials/form-booking.scss";
+@import "./partials/payment-steps.scss";
+@import "./partials/contact-detail.scss";
+@import "./partials/form-checkout.scss";
+@import "./partials/payment-method.scss";
+#tour-detail {
+    .tour-navbar {
+        display: flex;
+        position: relative;
+        &-item {
+            padding: 30px 22px;
+            margin-right: 10px;
+            color: $text-color;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            &.active {
+                color: #000;
+                border-bottom: 3px solid $primary-color;
+                z-index: 1;
+            }
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            width: 130%;
+            background-color: #d6d0d078;
+            height: 1px;
+            bottom: 0;
+            left: -112px;
+        }
+    }
+    .tour-wrapper {
+        margin-top: 6rem;
+    }
+    .tour-name {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+    .tour-rate {
+        svg {
+            color: #ffa11a;
+            &:not(:first-child) {
+                margin-left: 5px;
+            }
+        }
+        span {
+            font-size: 0.9rem;
+            margin-left: 15px;
+            color: $text-color;
+        }
+    }
+    .tour-sumary {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        color: $text-color;
+        font-size: 1rem;
+        &-item {
+            width: 33.3333%;
+            margin-bottom: 30px;
+            font-weight: 500;
+            svg {
+                color: $primary-color-hover;
+                margin-right: 20px;
+                font-size: 1.3rem;
+            }
+            &:last-child {
+                svg {
+                    margin-left: 6px;
+                }
+            }
+        }
+    }
+    .tour-description {
+        padding: 40px 0 50px;
+        border-bottom: 1px solid #d6d0d078;
+        border-top: 1px solid #d6d0d078;
+        line-height: 1.8;
+        font-size: 1rem;
+    }
+    .title-h1 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        font-weight: 700;
+    }
+    .title {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        margin-bottom: 3rem;
+        h1 {
+            font-weight: 700;
+        }
+        svg {
+            margin-right: 15px;
+        }
+    }
+    .tour-photos {
+        margin-top: 3rem;
+        .title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            h1 {
+                font-weight: 700;
+            }
+            svg {
+                margin-right: 15px;
+            }
+        }
+    }
+    .tour-image {
+        cursor: pointer;
+    }
+
+    #itinerary {
+        margin-top: 4rem;
+        border-top: 1px solid #d6d0d078;
+        padding: 50px 0;
+        border-radius: 3px;
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        .itinerary-item {
+            margin-bottom: 20px;
+        }
+        .itinerary-item-title {
+            cursor: pointer;
+            display: flex;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 25px;
+            background-color: #f3f3f3;
+            h2 {
+                margin-right: 10px;
+            }
+            span.active {
+                color: $primary-color;
+            }
+        }
+        .itinerary-item-content {
+            padding: 25px 0;
+        }
+    }
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        font-size: 0.9rem;
+        color: #ffff;
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    .swiper-pagination-bullet-active {
+        background-color: $primary-color;
+    }
+    .swiper-pagination-bullet {
+        padding: 5px;
+    }
+}

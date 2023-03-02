@@ -1,0 +1,40 @@
+#side-bar {
+    height: 100%;
+    #dashboard {
+        width: 300px;
+        padding: 2.4rem 1.8rem;
+
+        height: 100%;
+    }
+    .item {
+        h1 {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        &:not(:first-child) {
+            margin-top: 3rem;
+        }
+    }
+    .sub-item {
+        display: flex;
+        align-items: center;
+        margin-top: 1.2rem;
+        color: #7d7d7d;
+        cursor: pointer;
+        font-size: 0.9rem;
+        svg {
+            margin-right: 10px;
+        }
+        &.active {
+            border-left: 3px solid $primary-color;
+            padding-left: 1rem;
+            color: $primary-color;
+            height: 1.5rem;
+            transition: 1s;
+        }
+        &:hover {
+            color: $primary-color-hover;
+        }
+    }
+}

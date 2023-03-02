@@ -1,0 +1,28 @@
+.btn-full-width {
+    height: 40px;
+    background-color: $primary-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffff;
+    cursor: pointer;
+    &:hover {
+        background-color: $primary-color-hover;
+    }
+}
+
+.text-primary {
+    text-decoration: none;
+    color: $primary-color !important;
+    &:hover {
+        color: $primary-color-hover !important;
+    }
+}
+
+.reset-a {
+    color: unset;
+    text-decoration: none;
+    &:hover {
+        color: unset;
+    }
+}

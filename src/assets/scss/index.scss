@@ -1,0 +1,21 @@
+@import "./reset.scss";
+@import "bootstrap/dist/css/bootstrap.css";
+@import "./global.scss";
+
+
+//Date picker
+
+
+//Component
+@import "./components/header.scss";
+@import "./components/footer.scss";
+@import "./components/tour-item.scss";
+@import "./side-bar/index.scss";
+@import "./custom.scss";
+//Pages
+@import "./home/index.scss";
+@import "./tour-detail/index.scss";
+@import "./tour-list/index.scss";
+@import "./login/index.scss";
+@import "./user/index.scss";
+@import "./sign-up/index.scss";

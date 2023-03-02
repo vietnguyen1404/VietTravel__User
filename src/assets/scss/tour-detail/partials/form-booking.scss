@@ -1,0 +1,109 @@
+#form-booking {
+    margin-top: 3rem;
+    box-shadow: 0 1px 13px rgba(0, 0, 0, 0.1);
+    padding: 35px 25px 30px;
+    svg {
+        color: $primary-color;
+    }
+    .form-booking-title {
+        position: relative;
+        padding: 20px;
+        &::after {
+            content: "";
+            width: 3px;
+            height: 24px;
+            background-color: $primary-color;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        h1 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+    }
+    .booking-from {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        svg {
+            font-size: 1.6rem;
+        }
+    }
+    .booking-participants {
+        .booking-participants-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        &-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &-item-title {
+            h1 {
+                font-size: 1rem;
+                font-weight: 500;
+            }
+            span {
+                font-size: 0.8rem;
+            }
+        }
+        &-item-amount {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            .minus-btn,
+            .plus-btn {
+                svg {
+                    cursor: pointer;
+                    padding: 8px;
+                    width: 12p;
+                    height: 12px;
+                    border-radius: 50%;
+                    border: 1px solid $primary-color;
+                }
+            }
+            .number {
+                width: 18px;
+                margin: 0 16px;
+                font-size: 1.1rem;
+                text-align: center;
+            }
+        }
+    }
+    .total {
+        display: flex;
+        justify-content: space-between;
+        span {
+            font-weight: 600;
+        }
+        h1 {
+            font-weight: 600;
+            font-size: 1.8rem;
+            color: $primary-color;
+        }
+    }
+    a {
+        text-decoration: none;
+    }
+    .book-btn {
+        margin-top: 30px;
+        text-align: center;
+        padding: 15px 0;
+        background-color: $primary-color;
+        border-radius: 6px;
+        color: #ffff;
+        font-size: 1.2rem;
+        cursor: pointer;
+        svg {
+            color: inherit;
+            margin-right: 5px;
+        }
+        &:hover {
+            background-color: $primary-color-hover;
+        }
+    }
+}
