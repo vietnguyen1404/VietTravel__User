@@ -1,0 +1,60 @@
+#customer-review {
+    margin-top: 6rem;
+    .customer-review-item {
+        border-radius: 6px;
+        height: 400px;
+        padding: 40px 30px;
+        background-color: $primary-color-hover;
+        color: #ffff;
+        & > svg {
+            font-size: 2.4rem;
+        }
+        p {
+            margin: 20px 0;
+            line-height: 1.7;
+        }
+    }
+    .customer-info {
+        display: flex;
+    }
+    .customer-avatar {
+        flex: 1;
+        margin-right: 20px;
+        img {
+            width: 60px;
+            border-radius: 50%;
+            height: 60px;
+        }
+    }
+    .customer-info-detail {
+        flex: 3;
+        .customer-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .customer-rating {
+            margin: 12px 0;
+            svg:not(:first-child) {
+                margin-left: 4px;
+            }
+        }
+    }
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        font-size: 0.9rem;
+        color: #ffff;
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    .swiper-pagination-bullet-active {
+        background-color: white;
+    }
+    .swiper-pagination-bullet {
+        padding: 5px;
+    }
+}

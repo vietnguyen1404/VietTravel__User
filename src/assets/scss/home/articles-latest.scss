@@ -1,0 +1,33 @@
+#article-latest {
+    margin-bottom: 6rem;
+    .article-item {
+        position: relative;
+        background: url("@/assets/images/banners/home-banner.jpg") no-repeat right top /
+          cover;
+        height: 400px;
+    }
+    .article-content {
+        position: absolute;
+        bottom: 50px;
+        left: 40px;
+        color : #ffff;
+        h1 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+    }
+    .article-info {
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        .radio {
+            display: block;
+            border-radius: 50%;
+            width: 5px;
+            height: 5px;
+            background-color: #fff;
+            margin: 0 20px;
+        }
+    }
+}

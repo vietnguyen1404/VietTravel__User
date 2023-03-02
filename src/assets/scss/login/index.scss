@@ -1,0 +1,10 @@
+#login {
+    .fp-btn {
+        text-decoration: none;
+        color: $primary-color;
+        font-size: 13px;
+        &:hover  {
+            color: $primary-color-hover;
+        }
+    }
+}

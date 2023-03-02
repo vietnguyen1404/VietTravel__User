@@ -1,0 +1,75 @@
+.payment-steps {
+    background: url('@/assets/images/Tours/Tour1/tour-payment-banner.jpg') center / cover;
+    height: 300px;
+    position: relative;
+    .overlay {
+        position: absolute;
+        top : 0 ; 
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+        z-index: 1;
+    }
+    .tour-name {
+        font-size: 2rem;
+        font-weight: 600;
+        color : #ffff;
+        position: absolute;
+        top : 30%;
+        z-index: 2;
+    }
+    .payment-steps-wrapper {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        background-color:  rgba(110, 108, 107, 0.8);
+    }
+    .payment-steps-inner {
+        display: flex;
+        align-items: center;
+    }
+    .payment-step {
+        display: flex;
+        padding: 30px 40px 30px 0;
+        color : #ffff;
+        position: relative;
+        z-index: 2;
+        align-items: center;
+        .step-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 20px;
+            padding: 10px;
+            border-radius: 50%;
+            &.active {
+                color : #ffff;
+                background-color : $primary-color-hover;
+            }
+            &.complete {
+                background-color: #ffff;
+                color : $primary-color;
+            }
+            &.continue {
+                background-color:black;
+                color : #ffff;
+            }
+        }
+        h1 {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        &:not(:last-child)::after{
+            content: " ";
+            top: 0px;
+            bottom: 0px;
+            right: 15px;
+            position: absolute;
+            width: 25px;
+            background: url('https://demo.goodlayers.com/traveltour/main4/wp-content/plugins/tourmaster/images/payment-step-separator.png') center right;
+        }
+    }
+}

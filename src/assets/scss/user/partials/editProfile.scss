@@ -1,0 +1,48 @@
+.edit-profile {
+    width: 100%;
+    padding: 3rem;
+    background-color: #f3f3f3;
+
+    .avatar {
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        max-width: 500px;
+        img {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+        }
+        button {
+            margin-left: 4rem;
+        }
+    }
+    .form-item {
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        max-width: 500px;
+        .form-label {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            color: #5c5c5c;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        textarea,
+        .form-select,
+        .form-input,
+        .form-picker {
+            flex: 2;
+            border-radius: 0;
+            outline: none;
+        }
+        .form-select {
+            margin-left: 10px !important;
+        }
+        .form-picker {
+            margin-right: 15px;
+        }
+    }
+}

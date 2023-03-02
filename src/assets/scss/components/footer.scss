@@ -1,0 +1,43 @@
+#footer {
+    padding: 60px 0;
+    background-color: #222;
+    h1 {
+        color: #fff;
+        font-weight: 600;
+        font-size: 1.2rem;
+    }
+    .contact {
+        color: #ffff;
+        h1 {
+            color: $primary-color-hover;
+        }
+        .contact-phone {
+            margin: 15px 0 30px;
+            svg {
+                margin-right: 15px;
+            }
+        }
+        span {
+            display: block;
+            margin-top: 15px;
+        }
+    }
+    ul {
+        margin-top: 30px;
+        li {
+            color: $text-color;
+            &:not(:first-child) {
+                margin: 15px 0;
+            }
+            &:hover {
+                color: $primary-color-hover;
+                cursor: pointer;
+            }
+        }
+    }
+    p {
+        color: #fff;
+        margin-top: 30px;
+        line-height: 1.7;
+    }
+}

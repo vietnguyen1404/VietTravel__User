@@ -1,0 +1,71 @@
+.payment-method {
+    margin-top: 3rem;
+    > h1 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 30px;
+        color: $primary-color;
+    }
+    > h2 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 30px;
+        color: rgb(72, 71, 71);
+    }
+    &-name {
+        display: flex;
+        align-items: center;
+        svg {
+            font-size: 1.6rem;
+            color: $primary-color;
+        }
+        h1 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-left: 8px;
+            color: $primary-color;
+        }
+    }
+    &-item {
+        padding: 30px 20px 15px;
+        background-color: #f9f9f9;
+    }
+    &-item-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+    .method-check {
+        width: 20px;
+        height: 20px;
+        border: 1px solid $primary-color;
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+        &:hover::after {
+            display: block;
+            content: "";
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: $primary-color-hover;
+            top: 0;
+        }
+        &.active::after {
+            display: block;
+            content: "";
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: $primary-color-hover;
+            top: 0;
+        }
+    }
+    &-body {
+        margin-top: 40px;
+        p {
+            line-height: 1.5;
+        }
+    }
+}
