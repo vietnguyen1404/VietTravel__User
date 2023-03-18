@@ -1,5 +1,5 @@
 <template>
-    <div id="tour-detail">
+    <div id="tour-detail" v-if="tour">
         <tourGallery />
         <div class="container">
             <ul class="tour-navbar">
@@ -13,7 +13,7 @@
                     <div class="tour-wrapper">
                         <div class="tour-info">
                             <h1 class="tour-name">
-                                Chile – Santiago, Wine Country
+                                {{ tour.name }}
                             </h1>
                             <div class="tour-rate">
                                 <i class="fa-solid fa-star"></i>
@@ -21,7 +21,7 @@
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
-                                <span>(1 Review)</span>
+                                <span>({{ tour.reviews.length }} Review)</span>
                             </div>
                             <div class="tour-sumary">
                                 <div class="tour-sumary-item">
@@ -52,25 +52,7 @@
                             <div class="tour-description">
                                 <h1 class="title-h1">Description</h1>
                                 <p>
-                                    A wonderful serenity has taken possession of
-                                    my entire soul, like these sweet mornings of
-                                    spring which I enjoy with my whole heart. I
-                                    am alone, and feel the charm of existence in
-                                    this spot, which was created for the bliss
-                                    of souls like mine. I am so happy, my dear
-                                    friend, so absorbed in the exquisite sense
-                                    of mere tranquil existence, that I neglect
-                                    my talents.
-                                    <br /><br />
-                                    Lorem Ipsum decided to leave for the far
-                                    World of Grammar. The Big Oxmox advised her
-                                    not to do so, because there were thousands
-                                    of bad Comma wild Question Marks and devious
-                                    Semikoli, but the Little Blind Text didn’t
-                                    listen. She packed her seven versalia, put
-                                    her initial into the belt and made herself
-                                    on the way. When she reached the first hills
-                                    of t
+                                    {{ tour.description }}
                                 </p>
                             </div>
                             <div class="tour-photos">
@@ -87,14 +69,16 @@
                                     :autoplay="{
                                         delay: 10000,
                                         disableOnInteraction: false,
-                                    }"
-                                >
-                                    <swiper-slide v-for="n in 5" :key="n">
+                                    }">
+                                    <swiper-slide
+                                        v-for="photo in tour.photos"
+                                        :key="photo">
                                         <img
                                             class="tour-image"
-                                            src="@/assets/images/destination/destination1.jpg"
-                                            alt=""
-                                        />
+                                            :src="
+                                                require('@/assets/images/destination/destination2.jpg')
+                                            "
+                                            alt="" />
                                     </swiper-slide>
                                 </swiper>
                             </div>
@@ -103,24 +87,20 @@
                                 <div
                                     class="itinerary-item"
                                     v-for="n in 3"
-                                    :key="n"
-                                >
+                                    :key="n">
                                     <div
                                         class="itinerary-item-title"
                                         @click="onToggleItineraryTitle(n)"
-                                        v-b-toggle="'itinerary-day-' + n"
-                                    >
+                                        v-b-toggle="'itinerary-day-' + n">
                                         <h2>Day {{ n }}</h2>
                                         <span
-                                            :class="'itinerary-day-' + `${n}`"
-                                        >
+                                            :class="'itinerary-day-' + `${n}`">
                                             Barcelona - Zaragoza - Madric
                                         </span>
                                     </div>
                                     <b-collapse
-                                        class="collapse itinerary-item-content"
-                                        :id="'itinerary-day-' + `${n}`"
-                                    >
+                                        class="itinerary-item-content"
+                                        :id="'itinerary-day-' + `${n}`">
                                         <p>
                                             Some placeholder content for the
                                             collapse component. This panel is
@@ -135,7 +115,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <formBooking />
+                    <formBooking :tour="tour" />
                 </div>
             </div>
         </div>
@@ -150,7 +130,8 @@ import { Navigation, Pagination } from "swiper";
 import { SwiperCore, Swiper, SwiperSlide } from "swiper-vue2";
 
 // Import Swiper styles
-import "swiper/swiper-bundle.css";
+
+import { mapActions } from "vuex";
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -163,16 +144,23 @@ export default {
     },
     data() {
         return {
-            infoBooking: {},
+           tour : null
         };
     },
     methods: {
+        ...mapActions("tour", ["GetTour"]),
         onToggleItineraryTitle(index) {
             document
                 .getElementsByClassName(`itinerary-day-${index}`)[0]
                 .classList.toggle("active");
         },
+        async getTour() {
+            let response = await this.GetTour(this.$route.params.id);
+            this.tour = response.tour;
+        },
     },
-    created() {},
+    created() {
+        this.getTour();
+    },
 };
 </script>

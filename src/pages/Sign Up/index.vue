@@ -16,9 +16,7 @@
                             <div class="text-danger">*</div></label
                         >
                         <b-form-input v-model="entry.username" />
-                        <div class="messageErr">
-                            
-                        </div>
+                        <div class="messageErr"></div>
                     </b-form-group>
                 </div>
                 <div class="col-lg-6 my-2">
@@ -104,6 +102,9 @@
                         </b-form-radio-group>
                     </b-form-group>
                 </div>
+                <div class="errMessage" v-if="errMessage">
+                    <h1>* {{ errMessage }}</h1>
+                </div>
                 <div class="col-lg-12">
                     <div
                         class="btn-full-width sign-up-btn"
@@ -121,13 +122,14 @@ import { mapActions } from "vuex";
 export default {
     data: () => {
         return {
+            errMessage : "",
             confirmPassword: "",
             entry: {
                 username: "",
                 password: "",
                 profile: {
                     fullName: "",
-                    birthDate: "",
+                    birthDate: null,
                     email: "",
                     phone: "",
                     country: "",
@@ -140,9 +142,14 @@ export default {
         ...mapActions("user", ["Register"]),
         async handleSignUp() {
             let response = await this.Register(this.entry);
-            console.log("RES", response);
+            if(response.code === 200) {
+                this.$router.push('/login');
+            }else {
+                this.errMessage = response.message;
+            }
         },
     },
+    watch: {},
 };
 </script>
 <style scoped lang="scss">
@@ -151,5 +158,14 @@ export default {
 }
 #sign-up {
     background-color: #f3f3f3;
+}
+.errMessage {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    h1 {
+        margin-left: 0.5rem;
+        color : rgb(244, 94, 94);
+    }
 }
 </style>

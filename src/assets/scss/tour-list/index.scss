@@ -37,7 +37,7 @@
             display: block;
             position: absolute;
             right: 15px;
-            top: 74%;
+            top: 71%;
         }
         .search-destination {
             display: block;
@@ -77,12 +77,15 @@
         }
         .search-btn {
             height: 40px;
-            background-color: $primary-color-hover;
+            background-color: $primary-color;
             display: flex;
             justify-content: center;
             align-items: center;
             color : #ffff;
             cursor: pointer;
+            &:hover {
+                background-color: $primary-color-hover;
+            }
         }
     }
 }

@@ -78,7 +78,9 @@ export default {
     components: {},
     watch: {
         entry: {
-            handler() {},
+            handler() {
+                this.$emit("update",this.entry);
+            },
             deep: true,
         },
     },

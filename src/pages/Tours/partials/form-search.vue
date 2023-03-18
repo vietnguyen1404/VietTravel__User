@@ -3,7 +3,7 @@
         <b-form-group class="search-key-group">
             <label>Keywords</label>
             <b-form-input
-                v-model="entry.key"
+                v-model="entry.tourName"
                 class="search-key-input"></b-form-input>
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
         </b-form-group>
@@ -12,6 +12,8 @@
             <Datepicker
                 class="d-block"
                 v-model="entry.date"
+                value-type="YYYY-MM-DD"
+                format="DD-MM-YYYY"
                 autoApply
                 placeholder="From..."></Datepicker>
         </b-form-group>
@@ -38,24 +40,51 @@
                 :options="destinations" />
             <i class="fa-solid fa-caret-down"></i>
         </b-form-group>
-        <div class="search-btn mt-3">SEARCH</div>
+        <div class="search-btn mt-3" @click="searchTour">SEARCH</div>
     </div>
 </template>
 <script>
+// import moment from "moment";
 export default {
     data: () => ({
         entry: {
-            key: "",
-            date: "",
+            tourName: "",
+            date: null,
             minPrice: "",
             maxPrice: "",
             destination: null,
         },
         destinations: [
-            { value: "1", text: "Hue" },
-            { value: "2", text: "Sai Gon" },
-            { value: "3", text: "Ha Noi" },
+            { value: null, text: "Destination" },
+            { value: "hue", text: "Hue" },
+            { value: "sai gon", text: "Sai Gon" },
+            { value: "ha noi", text: "Ha Noi" },
         ],
     }),
+    watch: {
+        "$route.query": {
+            handler: function () {
+                this.entry = {
+                    ...this.$route.query,
+                };
+            },
+        },
+    },
+    methods: {
+        searchTour() {
+            for (const [key, value] of Object.entries(this.entry)) {
+                if (!value) {
+                    delete this.$route.query[key];
+                }
+            }
+            this.$router.push({
+                name: this.$route.name,
+                query: {
+                    ...this.entry,
+                },
+            });
+        },
+    },
+    created() {},
 };
 </script>

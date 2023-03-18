@@ -36,6 +36,7 @@
         justify-content: space-between;
         margin-bottom: 15px;
     }
+    .custom-control-input,
     .method-check {
         width: 20px;
         height: 20px;
@@ -46,20 +47,11 @@
         &:hover::after {
             display: block;
             content: "";
-            width: 16px;
-            height: 16px;
+            width: 17px;
+            height: 17px;
             border-radius: 50%;
             background-color: $primary-color-hover;
-            top: 0;
-        }
-        &.active::after {
-            display: block;
-            content: "";
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background-color: $primary-color-hover;
-            top: 0;
+
         }
     }
     &-body {

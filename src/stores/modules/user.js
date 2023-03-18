@@ -26,7 +26,6 @@ export default {
                 url: api.Login,
                 data: account,
             });
-            console.log(commit);
             if (response.data.code === 200) {
                 commit("setUser", response.data.data);
             }

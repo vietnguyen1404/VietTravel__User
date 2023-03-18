@@ -5,7 +5,8 @@
     border-radius: 6px;
     overflow: hidden;
     position: relative;
-    height: 420px;
+    height: 360px;
+    margin-bottom: 1.2rem;
     &:hover {
         transform: translate(-8px, -8px);
         transition: 0.4s;
@@ -46,7 +47,7 @@
         }
     }
     .tour-duration {
-        margin: 20px 0;
+        margin: 1rem 0;
         color: $text-color;
         svg {
             color: $primary-color;

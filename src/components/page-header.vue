@@ -21,7 +21,7 @@
                 <div class="form-account" v-if="!userProfile">
                     <div class="btn-login">
                         <router-link :to="{ name: 'login' }">
-                            <i class="fa-solid fa-user"></i>
+                            <i class="fa-solid fa-right-to-bracket"></i>
                             Login
                         </router-link>
                     </div>
@@ -36,7 +36,7 @@
                     <div class="btn-login">
                         <router-link :to="{ name: 'user.dashboard' }">
                             <i class="fa-solid fa-user"></i>
-                            hi : {{ getName(this.userProfile.fullName) }}
+                            Hi : {{ getName(this.userProfile.fullName) }}
                         </router-link>
                     </div>
                     <div class="btn-signup">
@@ -57,7 +57,7 @@
                         </router-link>
                     </div>
                     <ul class="nav-list">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <router-link :to="{ name: 'home' }">
                                 Home
                             </router-link>

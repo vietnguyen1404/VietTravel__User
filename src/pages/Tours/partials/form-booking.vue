@@ -10,8 +10,7 @@
                 v-model="infoBooking.date"
                 autoApply
                 placeholder="From..."
-                format="DD/MM/YYYY"
-            ></Datepicker>
+                format="DD/MM/YYYY"></Datepicker>
         </div>
         <hr />
         <div class="booking-participants">
@@ -53,7 +52,7 @@
             <div class="booking-participants-item">
                 <div class="booking-participants-item-title">
                     <h1>Baby</h1>
-                    <span>Under 2 year old</span>
+                    <span>Under 2 year old (Free)</span>
                 </div>
                 <div class="booking-participants-item-amount">
                     <span class="minus-btn" @click="reduceNumberOfBaby">
@@ -73,17 +72,20 @@
             <span>Total :</span>
             <h1>${{ total }}</h1>
         </div>
-        <router-link :to="{ name: 'tour.payment' }">
-            <div class="book-btn">
-                <i class="fa-solid fa-cart-shopping"></i>
-                BOOK NOW
-            </div>
-        </router-link>
+        <!-- <router-link :to="{ name: 'tour.payment' , params : {infoBooking : this.infoBooking , tour : this.tourInfo} }"> -->
+        <div class="book-btn" @click="handleBooking">
+            <i class="fa-solid fa-cart-shopping"></i>
+            BOOK NOW
+        </div>
+        <!-- </router-link> -->
     </div>
 </template>
 <script>
 import moment from "moment";
 export default {
+    props: {
+        tour: Object,
+    },
     data() {
         return {
             infoBooking: {
@@ -94,26 +96,21 @@ export default {
                     baby: 0,
                 },
             },
-            tourPrice: {
-                adult: 100,
-                children: 50,
-                baby: 0,
-            },
+            tourInfo: null,
         };
     },
     watch: {
         infoBooking: {
-            handler: function () {
-                console.log("DATE :", moment(this.infoBooking.date).format("DD/MM/yyyy"));
-            },
+            handler: function () {},
             deep: true,
         },
     },
     computed: {
         total() {
             return (
-                this.tourPrice.adult * this.infoBooking.participants.adult +
-                this.tourPrice.children * this.infoBooking.participants.children
+                this.tour.price.adult * this.infoBooking.participants.adult +
+                this.tour.price.children *
+                    this.infoBooking.participants.children
             );
         },
     },
@@ -154,6 +151,18 @@ export default {
                 alert("Không rồi còn đòi giảm nữa !!!");
             }
         },
+        handleBooking() {
+            const tourBooking = {
+                ...this.infoBooking,
+            };
+            localStorage.setItem("tourBooking", JSON.stringify(tourBooking));
+            this.$router.push({
+                name: "tour.payment"
+            });
+        },
+    },
+    created() {
+        this.tourInfo = this.tour;
     },
 };
 </script>

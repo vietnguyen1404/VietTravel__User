@@ -11,20 +11,21 @@
                                 <i class="fa-solid fa-money-bill"></i>
                                 <h1>Cash</h1>
                             </div>
-                            <div
-                                class="method-check"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#cash"
+                            <b-form-radio
+                                v-model="paymentMethod"
+                                v-b-toggle.cash
                                 @click="handleToggleCheck"
-                            ></div>
+                                value="cash"    
+                            >
+                            </b-form-radio>
                         </div>
-                        <div class="payment-method-body collapse" id="cash">
+                        <b-collapse class="payment-method-body" id="cash">
                             <p>
                                 Quý khách vui lòng thanh toán tại bất kỳ văn
                                 phòng Vietravel trên toàn quốc và các chi nhánh
                                 tại nước ngoài. <a href="/">Xem chi tiết</a>.
                             </p>
-                        </div>
+                        </b-collapse>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -34,14 +35,15 @@
                                 <i class="fa-solid fa-building-columns"></i>
                                 <h1>ATM / Banking</h1>
                             </div>
-                            <div
-                                class="method-check"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#banking"
+                            <b-form-radio
+                                v-model="paymentMethod"
+                                v-b-toggle.banking
                                 @click="handleToggleCheck"
-                            ></div>
+                                value="banking"    
+                            >
+                            </b-form-radio>
                         </div>
-                        <div class="payment-method-body collapse" id="banking">
+                        <b-collapse class="payment-method-body" id="banking">
                             <p>
                                 HÌNH THỨC THANH TOÁN BẰNG THẺ ATM/ INTERNET
                                 BANKING <br />
@@ -54,7 +56,7 @@
                                 Hướng dẫn thanh toán thẻ qua cồng 123 pay :
                                 https://123pay.vn/info/huong-dan/huong-dan
                             </p>
-                        </div>
+                        </b-collapse>
                     </div>
                 </div>
             </div>
@@ -63,10 +65,20 @@
 </template>
 <script>
 export default {
+    watch : {
+        paymentMethod : {
+            handler : function() {
+                this.$emit('update', this.paymentMethod);
+            }
+        }
+    },
     methods: {
         handleToggleCheck(e) {
             e.target.classList.toggle("active");
         },
     },
+    data : () => ({
+        paymentMethod : ''
+    })
 };
 </script>

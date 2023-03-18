@@ -1,10 +1,10 @@
 <template>
     <div class="tour-item">
-        <router-link :to="{ name : 'tour.detail' , params : { id : 2}}">
+        <router-link :to="{ name: 'tour.detail', params: { id: entry._id }}">
             <img
                 :src="require(`@/assets/images/destination/destination1.jpg`)"
                 alt="" />
-            <div class="label" v-if="entry.seller">Best Seller</div>
+            <div class="label" v-if="entry">Best Seller</div>
             <div class="tour-info">
                 <div class="tour-title">
                     <i class="fa-solid fa-bolt-lightning"></i>
@@ -20,12 +20,12 @@
                     <div class="tour-rate">
                         <i
                             class="fa-solid fa-star"
-                            v-for="(n, index) in entry.review"
+                            v-for="(n, index) in entry.reviews"
                             :key="index"></i>
-                        ({{ entry.review.length }} Review)
+                        ({{ entry.reviews.length }} Review)
                     </div>
                     <div class="tour-price">
-                        <h1>${{ entry.price }}</h1>
+                        <h1>${{ entry.price.adult }}</h1>
                     </div>
                 </div>
             </div>
@@ -35,19 +35,15 @@
 <script>
 export default {
     props: {
-        value: Object,
+        tour: Object,
     },
     data: () => ({
         entry: {
-            id: 1,
-            image: "@/assets/images/destination/destination1.jpg",
-            name: "Venice, Rome and Milan - 9 Days 8 Nights",
-            duration: 8,
-            rate: 5,
-            review: ["tot", "tot", "tot", "tot", "tot"],
-            price: 3000,
-            seller: true,
+
         },
     }),
+    created () {
+        this.entry = this.tour
+    }
 };
 </script>

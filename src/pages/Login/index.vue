@@ -4,16 +4,19 @@
             <div class="row mt-5">
                 <div class="col-lg-6">
                     <b-form-group>
-                        <label>Username or E-Mail</label>
+                        <label class="mb-2">Username or E-Mail</label>
                         <b-input v-model="account.username" />
                     </b-form-group>
                 </div>
                 <div class="col-lg-6">
                     <b-form-group>
-                        <label>Password</label>
+                        <label class="mb-2">Password</label>
                         <b-input v-model="account.password" />
                     </b-form-group>
                 </div>
+            </div>
+            <div class="errMessage" v-if="errMessage">
+                <h1>* {{ errMessage }}</h1>
             </div>
             <div class="btn-full-width mt-5" @click="handleSignIn">
                 SIGN IN!
@@ -42,6 +45,7 @@ export default {
             username: "",
             password: "",
         },
+        errMessage: "",
     }),
     methods: {
         ...mapGetters("user", ["getUser"]),
@@ -49,10 +53,24 @@ export default {
         async handleSignIn() {
             let response = await this.PostLogin(this.account);
             if (response.code === 200) {
-                await this.$router.push({ path: "/" });
-                // this.$router.go(0);
+                // await this.$router.push({ path: "/" }).then(() => {this.$router.go()})
+                const url = new URL("/", window.location.origin);
+                window.location.href = url.toString();
+            } else {
+                this.errMessage = response.message;
             }
         },
     },
 };
 </script>
+<style scoped lang="scss">
+.errMessage {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    h1 {
+        margin-left: 0.5rem;
+        color: rgb(244, 94, 94);
+    }
+}
+</style>
